@@ -1,3 +1,4 @@
+const hex = document.getElementById("hex");
 const generateBtn = document.getElementById("generateBtn");
 const restoreBtn = document.getElementById("restoreBtn");
 const colorValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
@@ -23,11 +24,13 @@ const generateHex = () => {
   }
   
   document.body.style.backgroundColor = currentHex;
+  hex.textContent = currentHex.toUpperCase();
 };
 
 // function to generate previous hex
 const generatePreviousHex = () => {
   document.body.style.backgroundColor = previousHex;
+  hex.textContent = previousHex.toUpperCase();
 };
 
 // event listeners
