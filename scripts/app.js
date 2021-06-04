@@ -2,6 +2,7 @@ const generateBtn = document.getElementById("generateBtn");
 const restoreBtn = document.getElementById("restoreBtn");
 const colorValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
 let currentHex;
+let previousHex;
 
 // utility function to generate random index
 const getRandom = (min, max) => {
@@ -10,6 +11,7 @@ const getRandom = (min, max) => {
 
 // function to generate hex color
 const generateHex = () => {
+  previousHex = currentHex;
   currentHex = "#";
   let len = colorValues.length;
 
@@ -19,8 +21,16 @@ const generateHex = () => {
 
     currentHex += value;
   }
-  console.log(currentHex)
+  
+  document.body.style.backgroundColor = currentHex;
+};
+
+// function to generate previous hex
+const generatePreviousHex = () => {
+  document.body.style.backgroundColor = previousHex;
 };
 
 // event listeners
 window.addEventListener("DOMContentLoaded", generateHex);
+generateBtn.addEventListener("click", generateHex);
+restoreBtn.addEventListener("click", generatePreviousHex);
